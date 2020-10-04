@@ -12,8 +12,27 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 25.2.2 (Org mode 9.1.14)
 
+Le but de ce document est de noter l'ensemble des informations
+pertinentes concernant votre projet. En effet, vous aurez probablement
+beaucoup d'essais, des erreurs et des tatonnements, répartis sur 3
+mois. Si vous ne les notez pas, vous aurez à les redécouvrir et les
+résoudre plusieurs fois.
+
 * Gestion du code
 ** URL du gitlab de l'équipe
 * Déployement dans Grid 5000
+  Les commandes vous permettant de lancer votre application dans
+  grid5000.
+* Plan d'expériences
+  Quels sont les mesures de performance que vous voulez avoir ? Donner
+  ici la liste des expériences précises à faire pour obtenir vos
+  mesures (paramètres, nombre et type de machines utilisés, fichiers
+  d'entrée, nombre de répétition, sorties)
+
+  Indiquer aussi le temps prévu (estimé) pour produire les données de
+  votre plan d'expérience.
 * Expérimentations
+  Les commandes vous permettant de lancer vos expérimentations de
+  manières automatiques.
 * Fabrication des courbes de performances
+  Les scripts pour traiter vos données et constuire les graphiques.
