@@ -1,3 +1,4 @@
-[debug] not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/G:/Download/dist_make/"), "dist_make")...
-[debug] Done updating ProjectRef(uri("file:/G:/Download/dist_make/"), "dist_make")
+[warn] scala-library-2.13.4-sources.jar no longer exists at /C:/Users/super/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.4/scala-library-2.13.4-sources.jar
+[debug] not up to date. inChanged = false, force = false
+[debug] Updating ProjectRef(uri("file:/home/antop/Documents/systeme-distribues/dist_make/"), "dist_make")...
+[debug] Done updating ProjectRef(uri("file:/home/antop/Documents/systeme-distribues/dist_make/"), "dist_make")
