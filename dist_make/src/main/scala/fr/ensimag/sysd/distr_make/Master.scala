@@ -17,6 +17,10 @@ object Master extends App {
     }}*/
 
   /* Argument Parser */
+  if(args.length != 3)
+    {
+      throw new Exception("No found arguments")
+    }
   var make = args(0).toString()
   var target = args(2).toString()
   println(make)
