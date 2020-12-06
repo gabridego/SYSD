@@ -20,7 +20,7 @@ class Parser(val filename: String) {
     var buffer_tasks = new ListBuffer[Task]()
     var index = 0
     val bufferedSource = Source.fromFile(filename)
-    val tab = bufferedSource.getLines.filter(_ != "").toArray
+    val tab = bufferedSource.getLines.filter(_ != "").filter(_(0) != '#').toArray
     while (index < tab.length){
       val current_line = tab(index)
       if (!current_line.contains(':')){
@@ -40,16 +40,16 @@ class Parser(val filename: String) {
         dependencies = current_recipe(1).trim
       }
       index += 1
-      val cmd = tab(index)
-      if (cmd(0) != '\t'){
-        throw new Exception("No tabulation detected" + tab(index))
+      var cmd = ""
+      if (tab(index)(0) == '\t'){
+        cmd = tab(index).trim
+        index += 1
       }
-      var current_task = new Task(current_target, dependencies.split(' ').toList, cmd.trim)
+      var current_task = new Task(current_target, dependencies.split(' ').toList, cmd)
 
-      if (index == 1)
+      if (index == 1 || (index == 2 && cmd != ""))
         root_task = current_task
 
-      index += 1
       buffer_tasks += current_task
     }
     bufferedSource.close
