@@ -25,4 +25,8 @@ object CommandRunner {
     val output = cmd.!
     return output
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cc4bf798395800322d519b3b959ccde652e5667e

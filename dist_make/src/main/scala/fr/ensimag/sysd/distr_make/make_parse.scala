@@ -8,10 +8,19 @@ class Task(val target: String, var dependencies: List[String], val command: Stri
   var parent = List[Task]()
   var children = List[Task]()
   def is_file_dependency(): Boolean={
+<<<<<<< HEAD
     if(dependencies.isEmpty && command == "")
       return true
     return false
   }
+=======
+    if(dependencies.isEmpty && command == ""){
+      return true
+    }
+    return false
+  }
+
+>>>>>>> cc4bf798395800322d519b3b959ccde652e5667e
 }
 
 class Parser(val filename: String) {
@@ -71,6 +80,10 @@ class Parser(val filename: String) {
       println(task.target)
       println("Dep:"+task.dependencies)
       println(" ")}
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc4bf798395800322d519b3b959ccde652e5667e
   }
 
   def get_task(target : String): Task ={
