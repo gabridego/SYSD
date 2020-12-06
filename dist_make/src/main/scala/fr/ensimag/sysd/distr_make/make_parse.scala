@@ -4,9 +4,16 @@ package distr_make
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
-class Task(val target: String, val dependencies: List[String], val command: String) {
+class Task(val target: String, var dependencies: List[String], val command: String) {
   var parent = List[Task]()
   var children = List[Task]()
+  def is_file_dependency(): Boolean={
+    if(dependencies.isEmpty && command == ""){
+      return true
+    }
+    return false
+  }
+
 }
 
 class Parser(val filename: String) {
@@ -55,7 +62,12 @@ class Parser(val filename: String) {
   val tasks = create_list_task()
 
   def print_all_target(): Unit ={
-    for (task <- tasks) println(task.target)
+    for (task <- tasks) {
+      print("Nome Target")
+      println(task.target)
+      println("Dep:"+task.dependencies)
+      println(" ")}
+
   }
 
   def get_task(target : String): Task ={
