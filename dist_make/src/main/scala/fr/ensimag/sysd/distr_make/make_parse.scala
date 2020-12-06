@@ -4,9 +4,15 @@ import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.Stack
 import scala.io.Source
 
+/** Basic Task class
+ *
+ *  @param target         name of the rule
+ *  @param dependencies   list of names of dependencies
+ *  @param command        command to execute
+ */
 class Task(val target: String, var dependencies: List[String], val command: String) {
-  var parent = List[Task]()
-  var children = List[Task]()
+  var parent = List[Task]()     // list of targets that depend on the current task
+  var children = List[Task]()   // list of targets the current task depends on
   def is_file_dependency(): Boolean={
     if(dependencies.isEmpty && command == "")
       return true
@@ -14,9 +20,17 @@ class Task(val target: String, var dependencies: List[String], val command: Stri
   }
 }
 
+/** Parse specified Makefile
+ *
+ *  @param filename       path to Makefile
+ */
 class Parser(val filename: String) {
   var root_task:Task = _
 
+  /** Reads Makefile, create tasks and build dependencies
+   *
+   *  @return             list of parsed tasks
+   */
   def create_list_task(): List[Task]={
     var buffer_tasks = new ListBuffer[Task]()
     var index = 0
@@ -54,6 +68,7 @@ class Parser(val filename: String) {
 
       var current_task = new Task(current_target, depList, cmd)
 
+      // first rule is the main task
       if (index == 1 || (index == 2 && cmd != ""))
         root_task = current_task
 
@@ -67,12 +82,16 @@ class Parser(val filename: String) {
 
   def print_all_target(): Unit ={
     for (task <- tasks) {
-      print("Nome Target")
-      println(task.target)
-      println("Dep:"+task.dependencies)
-      println(" ")}
+      println("Nome Target: " + task.target)
+      println("Dep: " + task.dependencies)
+    }
   }
 
+  /** Returns a task given its name
+   *
+   *  @param target
+   *  @return
+   */
   def get_task(target : String): Task ={
     for (task <- tasks) {
       if (task.target == target){
@@ -83,6 +102,10 @@ class Parser(val filename: String) {
 
   }
 
+  /** Build dependencies graph from a root target, assigning parents and children to involved tasks
+   *
+   *  @param target
+   */
   def create_graph(target: String): Unit = {
     if(target != "")
       root_task = get_task(target)
