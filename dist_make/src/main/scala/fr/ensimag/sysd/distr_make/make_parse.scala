@@ -1,16 +1,17 @@
-package fr.ensimag.sysd
-package distr_make
+package fr.ensimag.sysd.distr_make
 
 import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.Stack
 import scala.io.Source
 
-class Tree {
-  var leaves = List[Task]()
-}
-
-class Task(val target: String, val dependencies: List[String], val command: String) {
+class Task(val target: String, var dependencies: List[String], val command: String) {
   var parent = List[Task]()
   var children = List[Task]()
+  def is_file_dependency(): Boolean={
+    if(dependencies.isEmpty && command == "")
+      return true
+    return false
+  }
 }
 
 class Parser(val filename: String) {
@@ -21,6 +22,7 @@ class Parser(val filename: String) {
     var index = 0
     val bufferedSource = Source.fromFile(filename)
     val tab = bufferedSource.getLines.filter(_ != "").filter(_(0) != '#').toArray
+
     while (index < tab.length){
       val current_line = tab(index)
       if (!current_line.contains(':')){
@@ -35,17 +37,22 @@ class Parser(val filename: String) {
       if (current_target == ""){
         throw new Exception("No target specified on line " + current_line)
       }
+
       var dependencies = ""
-      if (current_recipe.length == 2){
+      var depList = List[String]()
+      if (current_recipe.length == 2) {
         dependencies = current_recipe(1).trim
+        depList = dependencies.split(' ').toList
       }
+
       index += 1
       var cmd = ""
       if (tab(index)(0) == '\t'){
         cmd = tab(index).trim
         index += 1
       }
-      var current_task = new Task(current_target, dependencies.split(' ').toList, cmd)
+
+      var current_task = new Task(current_target, depList, cmd)
 
       if (index == 1 || (index == 2 && cmd != ""))
         root_task = current_task
@@ -59,7 +66,11 @@ class Parser(val filename: String) {
   val tasks = create_list_task()
 
   def print_all_target(): Unit ={
-    for (task <- tasks) println(task.target)
+    for (task <- tasks) {
+      print("Nome Target")
+      println(task.target)
+      println("Dep:"+task.dependencies)
+      println(" ")}
   }
 
   def get_task(target : String): Task ={
@@ -72,7 +83,36 @@ class Parser(val filename: String) {
 
   }
 
-  def create_graph(): Unit ={
+  def create_graph(target: String): Unit = {
+    if(target != "")
+      root_task = get_task(target)
+
+    var depend: List[String] =  List[String]()
+    val stack = Stack(root_task)
+
+    while (stack.nonEmpty) {
+      val node = stack.pop()
+
+      if (node.dependencies.size > 0) {
+        for (n <- node.dependencies)
+          if (!(get_task(n).is_file_dependency()))
+            depend ::= n
+        node.dependencies = depend map (x => x)
+
+        if (!(depend.isEmpty)) {
+          for (n <- node.dependencies) {
+            val t = get_task(n)
+            node.children = node.children :+ t
+            t.parent = t.parent :+ node
+            stack.push(t)
+          }
+        }
+      }
+
+      depend = List[String]()
+    }
+
+    /*
     for (task <- tasks){
       if (task.dependencies.head != "")
         for (dep <- task.dependencies){
@@ -80,8 +120,9 @@ class Parser(val filename: String) {
           task.parent =  task.parent :+ current_parent
           current_parent.children = task :: current_parent.children
         }
+     */
 
-    }
+
   }
 
 }
