@@ -4,6 +4,10 @@ package distr_make
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
+class Tree {
+  var leaves = List[Task]()
+}
+
 class Task(val target: String, val dependencies: List[String], val command: String) {
   var parent = List[Task]()
   var children = List[Task]()
