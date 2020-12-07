@@ -1,4 +1,9 @@
-[debug] Acquiring lock on file G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\project\target\.sbt-compilation-infos\dist_make-compile\.sbt-idea-lock ...
+[debug] > Exec(compile, None, None)
+[debug] Evaluating tasks: Compile / compile
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 3 Scala sources to G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.12\classes ...
+[info] Non-compiled module 'compiler-bridge_2.12' for Scala 2.12.12. Compiling...
+[info]   Compilation completed in 11.799s.
 [error] G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\src\main\scala\fr\ensimag\sysd\distr_make\master_worker.scala:3:8: not found: object akka
 [error] import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 [error]        ^
@@ -103,4 +108,6 @@
 [error]   val system = ActorSystem("distributed-make")
 [error]                ^
 [error] 33 errors found
-[debug] Releasing lock on file G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\project\target\.sbt-compilation-infos\dist_make-compile\.sbt-idea-lock.
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 15 s, completed 7 dic 2020, 15:07:53
+[debug] > Exec(idea-shell, None, None)

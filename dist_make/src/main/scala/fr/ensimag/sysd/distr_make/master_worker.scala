@@ -1,5 +1,6 @@
 package fr.ensimag.sysd.distr_make
 
+import scala.collection.mutable.Queue
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import org.rogach.scallop._
 
@@ -31,7 +32,8 @@ case class InitWorker(task: Task, toContact: List[ActorRef])
  *  Initialize a worker for the root task, calls a recursive function and waits for completion
  */
 class Master extends Actor {
-  var stack = Map[String, ActorRef]()
+  var actorMap = Map[String, ActorRef]()
+  var taskQueue = Queue[Task]()
 
   /** Initialize a worker for each task of the given list
    *
@@ -39,40 +41,62 @@ class Master extends Actor {
    *
    *  @param tasks
    */
+    /*
   private def recMake(tasks: List[Task]): Unit = {
     var goodTasks = Set[Task]()
 
     for (task <- tasks) {
       // consider a task only if new
-      if (!(stack contains task.target)) {
+      if (!(actorMap contains task.target)) {
         val worker = context.actorOf(Props[Worker], name = task.target)
 
         // send message to worker, with task to build and list of workers to notify (the parents)
-        worker ! InitWorker(task, task.parent.map(x => stack(x.target)))
+        println("[master] " + task.target + " has parents" + task.parent.map(x => actorMap(x.target).path.name))
+        worker ! InitWorker(task, task.parent.map(x => actorMap(x.target)))
         // store mapping between target and worker
-        stack = stack + (task.target -> worker)
+        actorMap = actorMap + (task.target -> worker)
 
         goodTasks += task
       }
     }
 
+    println("[master] " + tasks.map(x => x.target))
     for (task <- tasks) {
       if (goodTasks contains task) {
         // recursively call workers for children
+        println("generating workers for " + task.target + " dependencies...")
         recMake(task.children)
       }
     }
   }
 
+     */
+
   def receive = {
     // initialization message, create worker for root task
     case InitMake(parser) =>
+      println("initializing " + self.path.name + " actor...")
+
       val root = parser.root_task
       val worker =  context.actorOf(Props[Worker], name = root.target)
       worker ! InitWorker(root, List(self))
-      stack = stack + (root.target -> worker)
+      actorMap = actorMap + (root.target -> worker)
 
-      recMake(root.children)
+      taskQueue ++= root.children
+
+      while (taskQueue.nonEmpty) {
+        val next = taskQueue.dequeue()
+        val worker = context.actorOf(Props[Worker], name = next.target)
+        worker ! InitWorker(next, next.parent.map(x => actorMap(x.target)))
+        actorMap = actorMap + (next.target -> worker)
+
+        for (child <- next.children)
+          if (!(actorMap contains child.target) && !(taskQueue contains child))
+            taskQueue += child
+
+      }
+
+      //recMake(root.children)
 
     // message received when root task is built
     case CompletedDep() =>
@@ -97,9 +121,12 @@ class Worker extends Actor {
 
   def receive = {
     case InitWorker(task, toContact) =>
+      println("[" + self.path.name + "] initializing ...")
       curTask = task
       leftDep = task.children.size
       actorsToContact = toContact
+      println("[" + self.path.name + "] must contact " + actorsToContact.map(x => x.path.name))
+      println("[" + self.path.name + "] " + leftDep + " dependencies")
       if (leftDep <= 0)
         self ! MakeTask()
 
@@ -108,12 +135,16 @@ class Worker extends Actor {
       if (!taskStarted) {
         taskStarted = true
         if (CommandRunner.run(curTask.command) == 0) {
-          for (actor <- actorsToContact)
+          for (actor <- actorsToContact) {
+            println("[" + self.path.name + "] Task completed, contacting " + actor.path.name)
             actor ! CompletedDep()
+          }
         } else {
           for (actor <- actorsToContact)
             actor ! ErrorDep()
         }
+
+        //context.stop(self)
       }
 
     // message received when one of the children is correctly built, decreases count of dependencies
@@ -148,6 +179,7 @@ object Main extends App {
 
   for (task <- parser_makefile.tasks.values)
     println(task, task.target, task.parent.map(x => x.target), task.children.map(x => x.target))
+  println(parser_makefile.root_task.target)
 
   // start master actor
   val system = ActorSystem("distributed-make")
