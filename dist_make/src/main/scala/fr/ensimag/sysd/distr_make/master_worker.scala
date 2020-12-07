@@ -77,9 +77,11 @@ class Master extends Actor {
     // message received when root task is built
     case CompletedDep() =>
       println("make completed")
+      context.system.terminate()
 
     case ErrorDep() =>
       println("compilation error!")
+      context.system.terminate()
   }
 }
 
@@ -145,10 +147,9 @@ object Main extends App {
   parser_makefile.create_graph(target)
 
   /*
-  for (task <- parser_makefile.tasks) {
+  for (task <- parser_makefile.tasks.values)
     println(task, task.target, task.parent.map(x => x.target), task.children.map(x => x.target))
-  }
-   */
+  */
 
   // start master actor
   val system = ActorSystem("distributed-make")

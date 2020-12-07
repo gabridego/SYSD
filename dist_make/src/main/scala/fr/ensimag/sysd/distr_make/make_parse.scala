@@ -30,8 +30,8 @@ class Parser(val filename: String) {
    *
    *  @return             list of parsed tasks
    */
-  def create_list_task(): List[Task]={
-    var buffer_tasks = new ListBuffer[Task]()
+  def create_list_task(): Map[String, Task]={
+    var buffer_tasks = Map[String, Task]()
     var index = 0
     val bufferedSource = Source.fromFile(filename)
     val tab = bufferedSource.getLines.filter(_ != "").filter(_(0) != '#').toArray
@@ -71,18 +71,22 @@ class Parser(val filename: String) {
       if (index == 1 || (index == 2 && cmd != ""))
         root_task = current_task
 
-      buffer_tasks += current_task
+      buffer_tasks = buffer_tasks + (current_target -> current_task)
     }
     bufferedSource.close
-    return buffer_tasks.toList
+    return buffer_tasks
   }
 
   val tasks = create_list_task()
 
   def print_all_target(): Unit ={
-    for (task <- tasks) {
+    /*for (task <- tasks) {
       println("Nome Target: " + task.target)
       println("Dep: " + task.dependencies)
+    }*/
+    for (target <- tasks.keys) {
+      println("Target: " + tasks(target).target)
+      println("Dep: " + tasks(target).dependencies)
     }
   }
 
@@ -92,13 +96,14 @@ class Parser(val filename: String) {
    *  @return
    */
   def get_task(target : String): Task ={
-    for (task <- tasks) {
+    /*for (task <- tasks) {
       if (task.target == target){
         return task
       }
     }
     throw new Exception("No task for this target :" + target)
-
+    */
+    return tasks(target)
   }
 
   /** Build dependencies graph from a root target, assigning parents and children to involved tasks
