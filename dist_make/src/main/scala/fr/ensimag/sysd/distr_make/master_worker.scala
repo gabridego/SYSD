@@ -1,8 +1,22 @@
 package fr.ensimag.sysd.distr_make
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import org.rogach.scallop._
 
-import scala.sys.process._
+
+class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
+  version("distributed make (c) 2020 Degola G., Giardina S., Privitera C.A., Stentzel Q.")
+  banner("""Usage: make [OPTION]
+           |Distributed make - Systèmes Distribués - Ensimag 3A
+           |Options:
+           |""".stripMargin)
+  //footer("\nFor more information, consult the report")
+
+  val filename = opt[String]("file", descr = "path to Makefile")
+  val target = opt[String]("target", descr = "makefile's target to build")
+  verify()
+}
+
 
 case class InitMake(parser: Parser)
 
@@ -21,7 +35,7 @@ class Master extends Actor {
 
   /** Initialize a worker for each task of the given list
    *
-   *  Recursive function, calls itself for the tasks that depend onthe current one.
+   *  Recursive function, calls itself for the tasks that depend on the current one.
    *
    *  @param tasks
    */
@@ -89,7 +103,7 @@ class Worker extends Actor {
 
     // message received when all dependencies are satisfied, contacts parent after execution
     case MakeTask() =>
-      if (taskStarted == false) {
+      if (!taskStarted) {
         taskStarted = true
         if (CommandRunner.run(curTask.command) == 0) {
           for (actor <- actorsToContact)
@@ -114,19 +128,31 @@ class Worker extends Actor {
 }
 
 object Main extends App {
-  val filename = "Makefile"
+  var filename = "Makefile"
+  var target = ""
+
+  // parse command line
+  val conf = new Conf(args)
+  if(conf.filename.isSupplied)
+    filename = conf.filename()
+  if(conf.target.isSupplied)
+    target = conf.target()
+
   val parser_makefile = new Parser(filename)
   //parser_makefile.print_all_target()
   //println(parser_makefile.tasks.map(x => x.target))
-  // build graph of dependencies, replace "" with the desired target
-  parser_makefile.create_graph("")
+  // build graph of dependencies
+  parser_makefile.create_graph(target)
 
+  /*
   for (task <- parser_makefile.tasks) {
     println(task, task.target, task.parent.map(x => x.target), task.children.map(x => x.target))
   }
+   */
 
   // start master actor
   val system = ActorSystem("distributed-make")
   val m = system.actorOf(Props[Master], name="master")
   m ! InitMake(parser_makefile)
+
 }

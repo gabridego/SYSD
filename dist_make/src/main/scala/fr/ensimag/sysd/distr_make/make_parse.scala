@@ -1,7 +1,6 @@
 package fr.ensimag.sysd.distr_make
 
-import scala.collection.mutable.ListBuffer
-import scala.collection.mutable.Stack
+import scala.collection.mutable.{ListBuffer, Stack}
 import scala.io.Source
 
 /** Basic Task class
