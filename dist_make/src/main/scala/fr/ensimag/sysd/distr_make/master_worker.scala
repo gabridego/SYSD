@@ -29,51 +29,15 @@ case class InitWorker(task: Task, toContact: List[ActorRef])
 
 /** Master actor.
  *
- *  Initialize a worker for the root task, calls a recursive function and waits for completion
+ *  Initialize a worker for the root task and for the next according to a queue
  */
 class Master extends Actor {
   var actorMap = Map[String, ActorRef]()
   var taskQueue = Queue[Task]()
-
-  /** Initialize a worker for each task of the given list
-   *
-   *  Recursive function, calls itself for the tasks that depend on the current one.
-   *
-   *  @param tasks
-   */
-    /*
-  private def recMake(tasks: List[Task]): Unit = {
-    var goodTasks = Set[Task]()
-
-    for (task <- tasks) {
-      // consider a task only if new
-      if (!(actorMap contains task.target)) {
-        val worker = context.actorOf(Props[Worker], name = task.target)
-
-        // send message to worker, with task to build and list of workers to notify (the parents)
-        println("[master] " + task.target + " has parents" + task.parent.map(x => actorMap(x.target).path.name))
-        worker ! InitWorker(task, task.parent.map(x => actorMap(x.target)))
-        // store mapping between target and worker
-        actorMap = actorMap + (task.target -> worker)
-
-        goodTasks += task
-      }
-    }
-
-    println("[master] " + tasks.map(x => x.target))
-    for (task <- tasks) {
-      if (goodTasks contains task) {
-        // recursively call workers for children
-        println("generating workers for " + task.target + " dependencies...")
-        recMake(task.children)
-      }
-    }
-  }
-
-     */
+  var exiting: Boolean = false
 
   def receive = {
-    // initialization message, create worker for root task
+    // initialization message, create workers for each tasks
     case InitMake(parser) =>
       println("initializing " + self.path.name + " actor...")
 
@@ -82,21 +46,21 @@ class Master extends Actor {
       worker ! InitWorker(root, List(self))
       actorMap = actorMap + (root.target -> worker)
 
+      // add root's dependencies to a queue
       taskQueue ++= root.children
 
       while (taskQueue.nonEmpty) {
+        // consider one task at a time
         val next = taskQueue.dequeue()
         val worker = context.actorOf(Props[Worker], name = next.target)
         worker ! InitWorker(next, next.parent.map(x => actorMap(x.target)))
         actorMap = actorMap + (next.target -> worker)
 
+        // add dependencies to a queue only if not present yet
         for (child <- next.children)
           if (!(actorMap contains child.target) && !(taskQueue contains child))
             taskQueue += child
-
       }
-
-      //recMake(root.children)
 
     // message received when root task is built
     case CompletedDep() =>
@@ -104,8 +68,11 @@ class Master extends Actor {
       context.system.terminate()
 
     case ErrorDep() =>
-      println("compilation error!")
-      context.system.terminate()
+      if(!exiting) {
+        println("compilation error!")
+        exiting = true
+        context.system.terminate()
+      }
   }
 }
 
@@ -125,8 +92,8 @@ class Worker extends Actor {
       curTask = task
       leftDep = task.children.size
       actorsToContact = toContact
-      println("[" + self.path.name + "] must contact " + actorsToContact.map(x => x.path.name))
-      println("[" + self.path.name + "] " + leftDep + " dependencies")
+      //println("[" + self.path.name + "] must contact " + actorsToContact.map(x => x.path.name))
+      //println("[" + self.path.name + "] " + leftDep + " dependencies")
       if (leftDep <= 0)
         self ! MakeTask()
 
@@ -134,9 +101,10 @@ class Worker extends Actor {
     case MakeTask() =>
       if (!taskStarted) {
         taskStarted = true
+        println("[" + self.path.name + "]")
         if (CommandRunner.run(curTask.command) == 0) {
           for (actor <- actorsToContact) {
-            println("[" + self.path.name + "] Task completed, contacting " + actor.path.name)
+            println("[" + self.path.name + "] task completed, contacting " + actor.path.name)
             actor ! CompletedDep()
           }
         } else {
@@ -144,7 +112,7 @@ class Worker extends Actor {
             actor ! ErrorDep()
         }
 
-        //context.stop(self)
+        context.stop(self)
       }
 
     // message received when one of the children is correctly built, decreases count of dependencies
@@ -177,9 +145,11 @@ object Main extends App {
   // build graph of dependencies
   parser_makefile.create_graph(target)
 
+  /*
   for (task <- parser_makefile.tasks.values)
     println(task, task.target, task.parent.map(x => x.target), task.children.map(x => x.target))
   println(parser_makefile.root_task.target)
+  */
 
   // start master actor
   val system = ActorSystem("distributed-make")

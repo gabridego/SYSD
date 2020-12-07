@@ -21,7 +21,7 @@ object CommandRunner {
     //println(result);
     //val cmd = "bash -lic  \"premier 2 `echo 1*200000000/20-1 |bc` > list1.txt\""
 
-    println(command)
+    println("\t" + command)
     val cmd = "bash -c  \"" + command + "\"" //-c when you want to execute a command specifically with that shell instead of bash
     val output = cmd.!
     return output

@@ -8,51 +8,50 @@
 [debug] Initial set of included nodes: 
 [debug] Recompiling all sources: number of invalidated sources > 50.0% of all sources
 [debug] compilation cycle 1
-[info] compiling 3 Scala sources to G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.12\classes ...
-[debug] Getting org.scala-sbt:compiler-bridge_2.12:1.4.3:compile for Scala 2.12.12
-[info] Non-compiled module 'compiler-bridge_2.12' for Scala 2.12.12. Compiling...
-[debug] Creating plain compiler interface for 2.12.12.
+[info] compiling 3 Scala sources to G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes ...
+[debug] Getting org.scala-sbt:compiler-bridge_2.13:1.4.3:compile for Scala 2.13.4
+[info] Non-compiled module 'compiler-bridge_2.13' for Scala 2.13.4. Compiling...
+[debug] Creating plain compiler interface for 2.13.4.
 [debug]   > Arguments: 
 [debug] 	-d
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_7450a7d1
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_aea6b60b
 [debug] 	-nowarn
 [debug] 	-bootclasspath
-[debug] 	C:\Users\super\.sbt\boot\scala-2.12.12\lib\scala-library.jar
+[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.4\scala-library-2.13.4.jar
 [debug] 	-classpath
-[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-interface\1.4.3\compiler-interface-1.4.3.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\util-interface\1.4.0\util-interface-1.4.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-bridge_2.12\1.4.3\compiler-bridge_2.12-1.4.3-sources.jar;C:\Users\super\.sbt\boot\scala-2.12.12\lib\scala-compiler.jar;C:\Users\super\.sbt\boot\scala-2.12.12\lib\jansi.jar;C:\Users\super\.sbt\boot\scala-2.12.12\lib\jline.jar;C:\Users\super\.sbt\boot\scala-2.12.12\lib\scala-reflect.jar;C:\Users\super\.sbt\boot\scala-2.12.12\lib\scala-xml_2.12.jar
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\scala\ZincCompat.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\API.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\AbstractZincFile.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\Analyzer.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\CallbackGlobal.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\ClassName.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\Compat.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\CompilerBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\ConsoleBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\DelegatingReporter.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\Dependency.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\ExtractAPI.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\ExtractUsedNames.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\GlobalHelpers.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\InteractiveConsoleBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\InteractiveConsoleFactoryBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\InteractiveConsoleHelper.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\InteractiveConsoleResponse.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\JarUtils.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\JavaUtils.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\LocalToNonLocalClass.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\LocateClassFile.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\Log.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\Message.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\PlainNioFile.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_9eea49be\xsbt\ScaladocBridge.scala
+[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-interface\1.4.3\compiler-interface-1.4.3.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\util-interface\1.4.0\util-interface-1.4.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-bridge_2.13\1.4.3\compiler-bridge_2.13-1.4.3-sources.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-compiler\2.13.4\scala-compiler-2.13.4.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.13.4\scala-reflect-2.13.4.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\jline\jline\3.16.0\jline-3.16.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\net\java\dev\jna\jna\5.3.1\jna-5.3.1.jar
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\scala\ZincCompat.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\API.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\AbstractZincFile.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Analyzer.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\CallbackGlobal.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ClassName.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Compat.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\CompilerBridge.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ConsoleBridge.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\DelegatingReporter.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Dependency.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ExtractAPI.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ExtractUsedNames.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\GlobalHelpers.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleBridge.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleFactoryBridge.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleHelper.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleResponse.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\JarUtils.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\JavaUtils.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\LocalToNonLocalClass.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\LocateClassFile.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Log.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Message.scala
+[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ScaladocBridge.scala
 [debug]       
-[info]   Compilation completed in 11.799s.
-[debug] [zinc] Running cached compiler 1ac25a55 for Scala compiler version 2.12.12
+[info]   Compilation completed in 14.584s.
+[debug] [zinc] Running cached compiler 367450e2 for Scala compiler version 2.13.4
 [debug] [zinc] The Scala compiler is invoked with:
 [debug] 	-bootclasspath
-[debug] 	C:\Users\super\.sbt\boot\scala-2.12.12\lib\scala-library.jar
+[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.4\scala-library-2.13.4.jar
 [debug] 	-classpath
-[debug] 	G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.12\classes
-[debug] Compilation failed (CompilerInterface)
-[error] (Compile / compileIncremental) Compilation failed
+[debug] 	G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\typesafe\akka\akka-actor_2.13\2.6.10\akka-actor_2.13-2.6.10.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\rogach\scallop_2.13\3.5.1\scallop_2.13-3.5.1.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\typesafe\config\1.4.0\config-1.4.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\modules\scala-java8-compat_2.13\0.9.0\scala-java8-compat_2.13-0.9.0.jar
+[debug] Scala compilation took 18.388215 s
+[info] done compiling

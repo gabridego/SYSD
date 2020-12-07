@@ -1,0 +1,59 @@
+[debug] Packaging G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\dist_make_2.13-0.1.jar ...
+[debug] Input file mappings:
+[debug] 	fr
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr
+[debug] 	fr\ensimag
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag
+[debug] 	fr\ensimag\sysd
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd
+[debug] 	fr\ensimag\sysd\distr_make
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make
+[debug] 	fr\ensimag\sysd\distr_make\CommandRunner$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\CommandRunner$.class
+[debug] 	fr\ensimag\sysd\distr_make\CommandRunner.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\CommandRunner.class
+[debug] 	fr\ensimag\sysd\distr_make\CompletedDep$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\CompletedDep$.class
+[debug] 	fr\ensimag\sysd\distr_make\CompletedDep.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\CompletedDep.class
+[debug] 	fr\ensimag\sysd\distr_make\Conf.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Conf.class
+[debug] 	fr\ensimag\sysd\distr_make\ErrorDep$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\ErrorDep$.class
+[debug] 	fr\ensimag\sysd\distr_make\ErrorDep.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\ErrorDep.class
+[debug] 	fr\ensimag\sysd\distr_make\InitMake$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\InitMake$.class
+[debug] 	fr\ensimag\sysd\distr_make\InitMake.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\InitMake.class
+[debug] 	fr\ensimag\sysd\distr_make\InitWorker$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\InitWorker$.class
+[debug] 	fr\ensimag\sysd\distr_make\InitWorker.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\InitWorker.class
+[debug] 	fr\ensimag\sysd\distr_make\Main$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Main$.class
+[debug] 	fr\ensimag\sysd\distr_make\Main$delayedInit$body.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Main$delayedInit$body.class
+[debug] 	fr\ensimag\sysd\distr_make\Main.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Main.class
+[debug] 	fr\ensimag\sysd\distr_make\MakeTask$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\MakeTask$.class
+[debug] 	fr\ensimag\sysd\distr_make\MakeTask.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\MakeTask.class
+[debug] 	fr\ensimag\sysd\distr_make\Master$$anonfun$receive$1.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Master$$anonfun$receive$1.class
+[debug] 	fr\ensimag\sysd\distr_make\Master.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Master.class
+[debug] 	fr\ensimag\sysd\distr_make\Parser.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Parser.class
+[debug] 	fr\ensimag\sysd\distr_make\Task.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Task.class
+[debug] 	fr\ensimag\sysd\distr_make\TaskMade$.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\TaskMade$.class
+[debug] 	fr\ensimag\sysd\distr_make\TaskMade.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\TaskMade.class
+[debug] 	fr\ensimag\sysd\distr_make\Worker$$anonfun$receive$2.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Worker$$anonfun$receive$2.class
+[debug] 	fr\ensimag\sysd\distr_make\Worker.class
+[debug] 	  G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes\fr\ensimag\sysd\distr_make\Worker.class
+[debug] Done packaging.

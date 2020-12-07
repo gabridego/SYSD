@@ -13,6 +13,8 @@ import java.nio.file.{Paths, Files}
 class Task(val target: String, var dependencies: List[Task], var command: String) {
   var parent: List[Task] = List[Task]()     // list of targets that depend on the current task
   var children: List[Task] = List[Task]()   // list of targets the current task depends on
+
+  /** Check if task refers to a file */
   def is_file(): Boolean={
     if(dependencies.isEmpty && command == "")
       return true
@@ -92,12 +94,6 @@ class Parser(val filename: String) {
    *  @return
    */
   def get_task(target : String): Task ={
-    /*try
-      return tasks(target)
-    catch {
-      case e: NoSuchElementException => throw new NoSuchElementException("No task for this target :" + target)
-    }
-    */
     if (tasks contains target)
       return tasks(target)
     else {
@@ -141,18 +137,5 @@ class Parser(val filename: String) {
 
       depend = List[Task]()
     }
-
-    /*
-    for (task <- tasks){
-      if (task.dependencies.head != "")
-        for (dep <- task.dependencies){
-          val current_parent = get_task(dep)
-          task.parent =  task.parent :+ current_parent
-          current_parent.children = task :: current_parent.children
-        }
-     */
-
-
   }
-
 }
