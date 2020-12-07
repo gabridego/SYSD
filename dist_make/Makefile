@@ -1,7 +1,7 @@
 list.txt:	list1.txt list2.txt list3.txt
 	cp list1.txt list.txt ; cat list2.txt >> list.txt ; cat list3.txt >> list.txt ;
 
-premier:
+premier: premier.c
 	gcc premier.c -o premier -lm
 
 list1.txt: premier

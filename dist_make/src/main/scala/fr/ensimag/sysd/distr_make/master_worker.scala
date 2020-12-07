@@ -146,10 +146,8 @@ object Main extends App {
   // build graph of dependencies
   parser_makefile.create_graph(target)
 
-  /*
   for (task <- parser_makefile.tasks.values)
     println(task, task.target, task.parent.map(x => x.target), task.children.map(x => x.target))
-  */
 
   // start master actor
   val system = ActorSystem("distributed-make")
