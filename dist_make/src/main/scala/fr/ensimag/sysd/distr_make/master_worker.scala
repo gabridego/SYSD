@@ -1,6 +1,6 @@
 package fr.ensimag.sysd.distr_make
 
-import scala.collection.mutable.Queue
+import scala.collection.mutable.{ListBuffer, Queue}
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import org.rogach.scallop._
 
@@ -34,6 +34,7 @@ case class InitWorker(task: Task, toContact: List[ActorRef])
 class Master extends Actor {
   var actorMap = Map[String, ActorRef]()
   var taskQueue = Queue[Task]()
+  var waitingTasks = ListBuffer[Task]()
   var exiting: Boolean = false
 
   def receive = {
@@ -49,17 +50,40 @@ class Master extends Actor {
       // add root's dependencies to a queue
       taskQueue ++= root.children
 
-      while (taskQueue.nonEmpty) {
-        // consider one task at a time
-        val next = taskQueue.dequeue()
-        val worker = context.actorOf(Props[Worker], name = next.target)
-        worker ! InitWorker(next, next.parent.map(x => actorMap(x.target)))
-        actorMap = actorMap + (next.target -> worker)
+      while (taskQueue.nonEmpty || waitingTasks.nonEmpty) {
 
-        // add dependencies to a queue only if not present yet
-        for (child <- next.children)
-          if (!(actorMap contains child.target) && !(taskQueue contains child))
-            taskQueue += child
+        for (waitingTask <- waitingTasks) {
+          if (waitingTask.parent.forall(x => actorMap contains x.target)) {
+            val worker = context.actorOf(Props[Worker], name = waitingTask.target)
+            worker ! InitWorker(waitingTask, waitingTask.parent.map(x => actorMap(x.target)))
+            actorMap = actorMap + (waitingTask.target -> worker)
+
+            // add dependencies to a queue only if not present yet
+            for (child <- waitingTask.children)
+              if (!(actorMap contains child.target) && !(taskQueue contains child))
+                taskQueue += child
+
+            waitingTasks -= waitingTask
+          }
+        }
+
+        if (taskQueue.nonEmpty) {
+          // consider one task at a time
+          val next = taskQueue.dequeue()
+
+          if (next.parent.forall(x => actorMap contains x.target)) {
+            val worker = context.actorOf(Props[Worker], name = next.target)
+            worker ! InitWorker(next, next.parent.map(x => actorMap(x.target)))
+            actorMap = actorMap + (next.target -> worker)
+
+            // add dependencies to a queue only if not present yet
+            for (child <- next.children)
+              if (!(actorMap contains child.target) && !(taskQueue contains child))
+                taskQueue += child
+          } else {
+            waitingTasks = waitingTasks :+ next
+          }
+        }
       }
 
     // message received when root task is built
