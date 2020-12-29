@@ -23,6 +23,15 @@ résoudre plusieurs fois.
 * Déployement dans Grid 5000
   Les commandes vous permettant de lancer votre application dans
   grid5000.
+
+  *oarsub* to reserve nodes
+
+  *kadeploy3* to install a OS
+
+  *taktuk* with *ansible* or *puppet* to install resources on all nodes
+
+  probably akka cluster https://www.freecodecamp.org/news/how-to-make-a-simple-application-with-akka-cluster-506e20a725cf/
+
 * Plan d'expériences
   Quels sont les mesures de performance que vous voulez avoir ? Donner
   ici la liste des expériences précises à faire pour obtenir vos
