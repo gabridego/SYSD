@@ -1,0 +1,8 @@
+---
+- name: Provision base node
+  hosts: default
+  become: yes
+  become_method: sudo
+  roles:
+    - fail2ban
+    
