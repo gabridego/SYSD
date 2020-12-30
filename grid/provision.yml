@@ -1,8 +1,31 @@
 ---
-- name: Provision base node
-  hosts: default
-  become: yes
-  become_method: sudo
-  roles:
-    - fail2ban
+- name: Provision configuration for scala code 
+  hosts: localhost
+  tasks:
+    - name: Display the config
+      debug:
+        msg: "The hostname is pippo"
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+    - name: Install latest version of "openjdk-6-jdk" ignoring "install-recommends"
+      apt:
+        name: openjdk-6-jdk
+        state: latest
+        install_recommends: no
+    - name: Install latest version of "sbt"
+      apt:
+        name: sbt
+        state: latest
     
+
+# command sbt
+
+
+    
+
+    
+
+
+
+
