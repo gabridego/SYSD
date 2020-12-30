@@ -2,7 +2,7 @@
 
 PWD="`(cd $(dirname \"$0\") && pwd )`"
 TAKTUK="${PWD}/taktuk.sh"
-PLAYBOOK="${PWD}/provision.yml"
+PLAYBOOK="${PWD}/"
 
 kadeploy3 -f $OAR_NODE_FILE -e debian10-x64-nfs -k
 
