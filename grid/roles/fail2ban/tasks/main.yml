@@ -1,0 +1,3 @@
+---
+- import_tasks: fail2ban.yml
+  tags: fail2ban
