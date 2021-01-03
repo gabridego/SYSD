@@ -4,7 +4,7 @@
 
 if [ $# -lt 2 ]
 then
-	echo 'Usage: $0 nodes walltime'
+	echo 'Usage: ./oarsub.sh nodes walltime'
 	echo 'walltime format: [hour:min:sec|hour:min|hour]'
 	exit -1
 fi
