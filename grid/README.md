@@ -11,7 +11,6 @@
 
 After node reservation, you can run the `create_conf.py` script in the `dist_make` directory to create the akka cluster configuration file for our project.
 
-## To-do
-
-Create an ansible or puppet file to install scala and akka dependencies on all nodes (is it really necessary?)
+## To-do 
+Take inspiration from the project (Distribuited make) in dist_make and the example in akka-cluster of this folder to write "The distributed make" with akka-cluster.
  
