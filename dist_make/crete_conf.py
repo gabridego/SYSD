@@ -15,7 +15,7 @@ with open("nodes.txt", "w") as out:
         command = "dig +short " + node
         process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         ip = process.communicate()[0]
-        node_ips.append('"akka://ClusterSystem@' + ip.strip() + '"')
+        node_ips.append('"akka://ClusterSystem@' + ip.strip() + ':25251"')
 
         out.write(ip)
 
