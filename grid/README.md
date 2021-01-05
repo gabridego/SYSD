@@ -8,6 +8,7 @@
 - execute `cd grid/`
 - to reserve nodes, execute `./oarsub.sh <nodes> <time>`. For example, to reserve 5 nodes for one hour and half `./oarsub.sh 5 01:30`
 - to install debian on all nodes and run the taktuk installer, `./deploy.sh <makefile>`. taktuk runs as root and executes the instructions in `taktuk.sh`. ( Exec the system)
+** REMARK: `<makefile>` must be in 
 
 After node reservation, you can run the `create_conf.py` script in the `dist_make` directory to create the akka cluster configuration file for our project.
 
