@@ -10,8 +10,6 @@
 - to install debian on all nodes and run the taktuk installer, `./deploy.sh <makefile>`. taktuk runs as root and executes the instructions in `taktuk.sh`. ( Exec the system)
 ** REMARK: `<makefile>` must be in ./systeme-distribues/akka-sample-cluster-scala
 
-After node reservation, you can run the `create_conf.py` script in the `dist_make` directory to create the akka cluster configuration file for our project.
-
 ## To-do 
 Take inspiration from the project (Distribuited make) in dist_make and the example in akka-cluster of this folder to write "The distributed make" with akka-cluster.
  
