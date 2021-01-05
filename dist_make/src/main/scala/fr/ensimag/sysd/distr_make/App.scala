@@ -26,7 +26,7 @@ object RootBehavior {
         }
       }
       if (cluster.selfMember.hasRole("Master")) {
-        ctx.spawn(Frontend(), "Master")
+        ctx.spawn(Master(), "Master")
       }
       Behaviors.empty
     }
