@@ -36,7 +36,7 @@ object App {
       akka.remote.artery.canonical.port=$port
       akka.remote.artery.canonical.hostname=$localIpAddress
       """).withFallback(ConfigFactory.load())
-      println(config)
+      // println(config)
     // Create an Akka system
     ActorSystem[Nothing](RootBehavior(), "ClusterSystem", config)
   }
