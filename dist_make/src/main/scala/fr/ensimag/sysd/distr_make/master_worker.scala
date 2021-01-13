@@ -37,9 +37,18 @@ class Master extends Actor {
   var waitingTasks = ListBuffer[Task]()
   var exiting: Boolean = false
 
+  //STOPWATCHES
+  var stopwatchActorCreationAndExecution: Long = 0
+  var stopwatchActorCreation: Long = 0
+  var stopwatchActorExecution: Long = 0
+
   def receive = {
     // initialization message, create workers for each tasks
     case InitMake(parser) =>
+      //COMPUTATION STOPWATCHES
+      println("STARTING STOPWATCHES")
+      stopwatchActorCreation = System.currentTimeMillis()
+
       println("initializing " + self.path.name + " actor...")
 
       val root = parser.root_task
@@ -85,10 +94,21 @@ class Master extends Actor {
           }
         }
       }
+      //COMPUTATION STOPWATCHES
+      stopwatchActorExecution = System.currentTimeMillis()
+      stopwatchActorCreation = stopwatchActorExecution - stopwatchActorCreation
 
     // message received when root task is built
     case CompletedDep() =>
       println("make completed")
+
+      //COMPUTATION STOPWATCHES
+      stopwatchActorExecution = System.currentTimeMillis() - stopwatchActorExecution
+      stopwatchActorCreationAndExecution = stopwatchActorCreation + stopwatchActorExecution
+      println("TIME SPENT IN CREATION: " + stopwatchActorCreation + "ms")
+      println("TIME SPENT IN EXECUTION: " + stopwatchActorExecution + "ms")
+      println("TIME SPENT IN CREATION + EXECUTION: " + stopwatchActorCreationAndExecution + "ms")
+
       context.system.terminate()
 
     case ErrorDep() =>
