@@ -4,7 +4,7 @@ import akka.actor.typed.ActorRef
 import akka.actor.typed.Behavior
 import akka.actor.typed.scaladsl.ActorContext
 import akka.actor.typed.scaladsl.Behaviors
-import sample.cluster.CborSerializable
+import fr.ensimag.sysd.distr_make.CborSerializable
 
 import scala.concurrent.duration._
 

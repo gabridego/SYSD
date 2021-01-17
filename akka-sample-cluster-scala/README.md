@@ -61,11 +61,11 @@ Let's take a look at an example that illustrates how workers, here only on nodes
 
 The example application provides a service to transform text. At a periodic interval the frontend simulates an external request to process a text which it forwards to available workers if there are any. 
 
-Since the discovery of workers is dynamic both *backend*  and *frontend* nodes can be added to the cluster dynamically. 
+Since the discovery of workers is dynamic both *backend and *frontend* nodes can be added to the cluster dynamically. 
 
-The backend worker that performs the transformation job is defined in [TransformationBackend.scala](src/main/scala/sample/cluster/transformation/Worker.scala). When starting up a worker registers itself to the receptionist so that it can be discovered through its `ServiceKey` on any node in the cluster.
+The backend worker that performs the transformation job is defined in [TransformationBackend.scala](src/main/scala/fr/ensimag/sysd/distr_make/Worker.scala). When starting up a worker registers itself to the receptionist so that it can be discovered through its `ServiceKey` on any node in the cluster.
 
-The frontend that simulates user jobs as well as keeping track of available workers is defined in [Frontend.scala](src/main/scala/sample/cluster/transformation/Frontend.scala). The actor subscribes to the `Receptionist` with the `WorkerServiceKey` to receive updates when the set of available workers in the cluster changes. If a worker dies or its node is removed from the cluster the receptionist will send out an updated listing so the frontend does not need to `watch` the workers.
+The frontend that simulates user jobs as well as keeping track of available workers is defined in [Frontend.scala](src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala). The actor subscribes to the `Receptionist` with the `WorkerServiceKey` to receive updates when the set of available workers in the cluster changes. If a worker dies or its node is removed from the cluster the receptionist will send out an updated listing so the frontend does not need to `watch` the workers.
 
 To run this sample, make sure you have shut down any previously started cluster sample, then type `sbt "runMain sample.cluster.transformation.App"`.
 

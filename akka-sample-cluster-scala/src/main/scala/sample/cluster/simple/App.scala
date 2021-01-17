@@ -1,5 +1,5 @@
 package sample.cluster.simple
-import java.net._
+
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorSystem
 import akka.actor.typed.Behavior
@@ -26,17 +26,11 @@ object App {
   }
 
   def startup(port: Int): Unit = {
-    val localhost: InetAddress = InetAddress.getLocalHost
-    val localIpAddress: String = localhost.getHostAddress
-
-    println(s"localIpAddress = $localIpAddress")
-
     // Override the configuration of the port
     val config = ConfigFactory.parseString(s"""
       akka.remote.artery.canonical.port=$port
-      akka.remote.artery.canonical.hostname=$localIpAddress
       """).withFallback(ConfigFactory.load())
-      // println(config)
+
     // Create an Akka system
     ActorSystem[Nothing](RootBehavior(), "ClusterSystem", config)
   }
