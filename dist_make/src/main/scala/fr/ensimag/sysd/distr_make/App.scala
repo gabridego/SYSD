@@ -72,10 +72,10 @@ def main(args: Array[String]): Unit = {
   */
 
   // start master actor
-  
+
   startup("master", args(0).toInt) }
-  else 
-  { startup("worker",arg(0).toInt) }
+  else
+  { startup("worker",args(0).toInt) }
 
 }
 
@@ -93,9 +93,8 @@ def startup(role: String, port: Int): Unit = {
         """)
       .withFallback(ConfigFactory.load("transformation"))
 
-    ActorSystem[Nothing](RootBehavior(), "ClusterSystem", config)
+    akka.actor.typed.ActorSystem[Nothing](RootBehavior(), "ClusterSystem", config)
 
   }
 
 }
-

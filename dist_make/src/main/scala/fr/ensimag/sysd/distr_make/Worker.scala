@@ -10,7 +10,7 @@ import akka.actor.typed.Behavior
 import akka.actor.typed.receptionist.Receptionist
 import akka.actor.typed.receptionist.ServiceKey
 import akka.actor.typed.scaladsl.Behaviors
-import sample.cluster.CborSerializable
+import fr.ensimag.sysd.CborSerializable
 
 //#worker
 object Worker {
@@ -19,10 +19,10 @@ object Worker {
   var curTask: Task = _
   var leftDep: Int = _                      // remaining dependencies to satisfy
   var taskStarted: Boolean = false          // flag to ensure command is run only once
-  var actorsToContact: List[ActorRef] = _   // list of parent workers
+  var actorsToContact: List[akka.actor.ActorRef] = _   // list of parent workers
 
   sealed trait Command
-  final case class TransformText(text: String, replyTo: ActorRef[TextTransformed]) extends Command with CborSerializable
+  final case class TransformText(text: String, replyTo: akka.actor.typed.ActorRef[TextTransformed]) extends Command with CborSerializable
   final case class TextTransformed(text: String) extends CborSerializable
 
   def apply(): Behavior[Command] =
@@ -31,10 +31,10 @@ object Worker {
       ctx.log.info("Registering myself with receptionist")
       ctx.system.receptionist ! Receptionist.Register(WorkerServiceKey, ctx.self)
 
-      Behaviors.receiveMessage {
+      akka.actor.typed.scaladsl.Behaviors.receiveMessage {
         case TransformText(text, replyTo) =>
           replyTo ! TextTransformed(text.toUpperCase)
-          
+
 
         case InitWorker(task, toContact) =>
       println("[" + self.path.name + "] initializing ...")
