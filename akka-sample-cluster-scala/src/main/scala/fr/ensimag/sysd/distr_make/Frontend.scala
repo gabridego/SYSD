@@ -22,7 +22,7 @@ object Frontend {
 
 
   def apply(): Behavior[Event] = Behaviors.setup { ctx =>
-    /*Behaviors.withTimers { timers =>
+    Behaviors.withTimers { timers =>
       // subscribe to available workers
       val subscriptionAdapter = ctx.messageAdapter[Receptionist.Listing] {
         case Worker.WorkerServiceKey.Listing(workers) =>
@@ -33,11 +33,7 @@ object Frontend {
       timers.startTimerWithFixedDelay(Tick, Tick, 2.seconds)
 
       running(ctx, IndexedSeq.empty, jobCounter = 0)
-    }*/
-    while(true)
-      ctx.log.info("test")
-
-    Behaviors.same
+    }
   }
 
   private def running(ctx: ActorContext[Event], workers: IndexedSeq[ActorRef[Worker.TransformText]], jobCounter: Int): Behavior[Event] =
