@@ -25,6 +25,7 @@ object Worker {
 
       Behaviors.receiveMessage {
         case MakeTask(task, replyTo) =>
+
           CommandRunner.run(task)
           replyTo ! TaskCompleted(task)
           Behaviors.same

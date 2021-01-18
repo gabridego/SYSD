@@ -38,13 +38,13 @@ object Frontend {
       var taskQueue = Queue[Task]()
       var waitingTasks = HashSet[Task]()
       var taskDone = HashSet[String]()
-      ctx.log.info(parser_makefile.root_task.children(0).command)
-      ctx.log.info(taskDone(parser_makefile.root_task.command).toString())
+      //ctx.log.info(parser_makefile.root_task.children(0).command)
+      //ctx.log.info(taskDone(parser_makefile.root_task.command).toString())
 
-      for (task <- taskDone){
-        ctx.log.info(task)
-      }
+      // to start processing, add root task to task to process
+      ctx.log.info("adding {} to queue", parser_makefile.root_task.target)
       taskQueue += parser_makefile.root_task
+      ctx.log.info("tasks in queue: {}", taskQueue.map(x => x.target))
 
       timers.startTimerWithFixedDelay(Tick, Tick, 2.seconds)
 
@@ -57,28 +57,35 @@ object Frontend {
       case WorkersUpdated(newWorkers) =>
         ctx.log.info("List of services registered with the receptionist changed: {}", newWorkers)
         running(ctx, newWorkers.toIndexedSeq, jobCounter, taskQueue, waitingTasks, taskDone)
+
       case Tick =>
+        if (waitingTasks.isEmpty && taskQueue.isEmpty){
+          Behaviors.stopped
+        }
+
         val currentTask = choiceTask(taskQueue, waitingTasks, taskDone)
-        ctx.log.info(currentTask.command)
-        ctx.log.info(taskQueue.isEmpty.toString())
-        ctx.log.info(waitingTasks.isEmpty.toString())
+        ctx.log.info("current task: {}", currentTask.target)
+        ctx.log.info("tasks in queue: {}", taskQueue.map(x => x.target))
+        ctx.log.info("waiting tasks: {}", waitingTasks.map(x => x.target))
         if (workers.isEmpty) {
           ctx.log.warn("Got tick request but no workers available, not sending any work")
+          taskQueue += currentTask
           Behaviors.same
         } else if (currentTask.command == ""){
-          ctx.log.warn("Waiting for work")
+          ctx.log.info("Waiting for work")
           Behaviors.same
         } else {
           // how much time can pass before we consider a request failed
-          implicit val timeout: Timeout = 150.seconds
+          implicit val timeout: Timeout = 600.seconds
           val selectedWorker = workers(jobCounter % workers.size)
-          ctx.log.info("Sending work for processing to {}", selectedWorker)
+          ctx.log.info("Sending task {} for processing to {}", currentTask.target, selectedWorker)
           ctx.ask(selectedWorker, Worker.MakeTask(currentTask.command, _)) {
             case Success(transformedText) => TransformCompleted(transformedText.text, transformedText.text)
             case Failure(ex) => JobFailed("Processing timed out", currentTask)
           }
           running(ctx, workers, jobCounter + 1, taskQueue, waitingTasks, taskDone)
         }
+
       case TransformCompleted(originalText, transformedText) =>
         taskDone += transformedText
         ctx.log.info("Got completed run of: {}", transformedText)
@@ -94,11 +101,13 @@ object Frontend {
     def choiceTask(taskQueue: Queue[Task], waitingTasks: HashSet[Task], taskDone: HashSet[String]): Task =
       if (waitingTasks.isEmpty && taskQueue.isEmpty){
         return new Task("", List[Task](), "")
+        //program should end
       } else {
         while (!taskQueue.isEmpty){
           val task = taskQueue.dequeue()
           for (child <- task.children){
-            taskQueue += child
+            if (!taskQueue.contains(child) && !taskDone(child.command))
+              taskQueue += child
           }
           if (!taskDone(task.command) && task.children.forall(x => taskDone(x.command))){
             return task

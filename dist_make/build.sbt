@@ -3,11 +3,10 @@ import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys.MultiJvm
 
 val akkaVersion = "2.6.8"
 
-lazy val `akka-sample-cluster-scala` = project
+lazy val `dist_make` = project
   .in(file("."))
   .settings(multiJvmSettings: _*)
   .settings(
-    organization := "com.lightbend.akka.samples",
     scalaVersion := "2.13.1",
     Compile / scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Xlog-reflective-calls", "-Xlint"),
     Compile / javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation"),

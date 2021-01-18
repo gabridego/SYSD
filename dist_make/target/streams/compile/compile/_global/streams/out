@@ -1,6 +1,25 @@
-[debug] Acquiring lock on file G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\project\target\.sbt-compilation-infos\dist_make-compile\.sbt-idea-lock ...
-[warn] 1 deprecation (since 2.13.0)
-[warn] 4 deprecations (since 2.13.3)
-[warn] 5 deprecations in total; re-run with -deprecation for details
-[warn] three warnings found
-[debug] Releasing lock on file G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\project\target\.sbt-compilation-infos\dist_make-compile\.sbt-idea-lock.
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/CommandRunner.scala:4:23: Unused import[0m
+[0m[[0m[33mwarn[0m] [0m[0mimport scala.language.postfixOps[0m
+[0m[[0m[33mwarn[0m] [0m[0m                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:3:34: Unused import[0m
+[0m[[0m[33mwarn[0m] [0m[0mimport scala.collection.mutable.{ListBuffer, Queue, HashSet}[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:35:11: local var target in value $anonfun is never updated: consider using immutable val[0m
+[0m[[0m[33mwarn[0m] [0m[0m      var target = ""[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:38:11: local var taskQueue in value $anonfun is never updated: consider using immutable val[0m
+[0m[[0m[33mwarn[0m] [0m[0m      var taskQueue = Queue[Task]()[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:39:11: local var waitingTasks in value $anonfun is never updated: consider using immutable val[0m
+[0m[[0m[33mwarn[0m] [0m[0m      var waitingTasks = HashSet[Task]()[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:40:11: local var taskDone in value $anonfun is never updated: consider using immutable val[0m
+[0m[[0m[33mwarn[0m] [0m[0m      var taskDone = HashSet[String]()[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/make_parse.scala:100:11: local var task in method get_task is never updated: consider using immutable val[0m
+[0m[[0m[33mwarn[0m] [0m[0m      var task = new Task(target, List[Task](), "")[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/gabriele/Documents/systeme-distribues/dist_make/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala:121:13: return statement uses an exception to pass control to the caller of the enclosing named method choiceTask[0m
+[0m[[0m[33mwarn[0m] [0m[0m            return waitingtask[0m
+[0m[[0m[33mwarn[0m] [0m[0m            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m8 warnings found[0m
