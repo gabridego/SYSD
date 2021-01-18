@@ -2,3 +2,5 @@ To launch the systeme you have to run this three command in different terminal :
 - sbt "runMain fr.ensimag.sysd.distr_make.App backend 25251"
 - sbt "runMain fr.ensimag.sysd.distr_make.App backend 25252"
 - sbt "runMain fr.ensimag.sysd.distr_make.App frontend 0"
+
+https://doc.akka.io/docs/akka/current/cluster-usage.html
