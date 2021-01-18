@@ -20,6 +20,6 @@ taktuk -l root -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq
 cd ../dist_make
 python create_conf.py $2 $1
 
-#cd ../grid
-#taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | tail -n +2 | head -$1 ) broadcast exec [ $TAKTUK_EXEC $2 ] &
-#taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | head -1 ) broadcast exec [ $TAKTUK_EXEC_MASTER $2 ]
+cd ../grid
+taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | tail -n +2 | head -$1 ) broadcast exec [ $TAKTUK_EXEC $2 ] &
+taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | head -1 ) broadcast exec [ $TAKTUK_EXEC_MASTER $2 ]
