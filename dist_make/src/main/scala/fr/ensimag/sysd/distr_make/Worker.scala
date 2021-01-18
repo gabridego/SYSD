@@ -25,6 +25,10 @@ object Worker {
 
       Behaviors.receiveMessage {
         case MakeTask(task, replyTo) =>
+          if (task == "") {
+            CommandRunner.run("kill -9 $(pidof java)") 
+            replyTo ! TaskCompleted(task)
+          }
 
           CommandRunner.run(task)
           replyTo ! TaskCompleted(task)

@@ -68,6 +68,16 @@ object Frontend {
         if (waitingTasks.isEmpty && taskQueue.isEmpty){
           stopTimersExecutionComplete()
           Behaviors.stopped
+          ctx.log.info("empty lists!!!")
+          for (worker <- workers) {
+            implicit val timeout: Timeout = 600.seconds
+            ctx.ask(worker, Worker.MakeTask("", _)) {
+              case Success(transformedText) => TransformCompleted("","")
+              case Failure(ex) => JobFailed("", new Task("", List[Task](), ""))
+            }
+          }
+          CommandRunner.run("kill -9 $(pidof java)")
+          
         }
 
         val currentTask = choiceTask(taskQueue, waitingTasks, taskDone)
