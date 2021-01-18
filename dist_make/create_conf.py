@@ -1,5 +1,11 @@
 import os, sys, subprocess
 
+"""
+    Args:
+    - Port number for akka cluster (ex. 25251)
+    - Number of worker nodes (ex. 3)
+"""
+
 # get nodes' hostnames
 nodes = set()
 with open(os.environ['OAR_NODE_FILE'], "r") as f:
@@ -8,10 +14,10 @@ with open(os.environ['OAR_NODE_FILE'], "r") as f:
         nodes.add(line.strip())
 
 port = '25251'
-nb_nodes = 2
+nb_nodes = 1
 if len(sys.argv) > 1:
     port = sys.argv[1]
-    nb_nodes = sys.argv[2]
+    nb_nodes = sys.argv[2] + 1
 
 # get nodes's ips and save them in a file to access from nodes (nfs)
 node_ips = []
@@ -24,6 +30,7 @@ with open("../grid/nodes.txt", "w") as out:
 
         if i < nb_nodes:
             node_ips.append('"akka://ClusterSystem@' + ip.strip() + ':' + port + '"')
+            i += 1
 
         out.write(ip)
 
