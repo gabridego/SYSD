@@ -1,11 +1,11 @@
-
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.10"
-libraryDependencies += "org.rogach" %% "scallop" % "3.5.1"
+import com.typesafe.sbt.SbtMultiJvm.multiJvmSettings
+import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys.MultiJvm
 
 val akkaVersion = "2.6.8"
 
 lazy val `akka-sample-cluster-scala` = project
   .in(file("."))
+  .settings(multiJvmSettings: _*)
   .settings(
     organization := "com.lightbend.akka.samples",
     scalaVersion := "2.13.1",
@@ -26,3 +26,4 @@ lazy val `akka-sample-cluster-scala` = project
     Test / parallelExecution := false,
     licenses := Seq(("CC0", url("http://creativecommons.org/publicdomain/zero/1.0")))
   )
+  .configs (MultiJvm)
