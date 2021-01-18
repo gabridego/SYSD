@@ -24,5 +24,5 @@ python create_conf.py
 
 uniq $OAR_NODE_FILE > nodes.txt
 
-#taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES | tail -n +2 ) broadcast exec [ $TAKTUK_EXEC ]
+taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES | tail -n +2 | head -$1 ) broadcast exec [ $TAKTUK_EXEC ]
 #taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES | head -1 ) broadcast exec [ $TAKTUK_EXEC_MASTER $1 ]

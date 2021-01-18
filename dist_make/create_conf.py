@@ -7,15 +7,23 @@ with open(os.environ['OAR_NODE_FILE'], "r") as f:
         #nodes.add('"akka://ClusterSystem@' + line.strip() + '"')
         nodes.add(line.strip())
 
+port = '25251'
+nb_nodes = 2
+if len(sys.argv) > 1:
+    port = sys.argv[1]
+    nb_nodes = sys.argv[2]
 
 # get nodes's ips and save them in a file to access from nodes (nfs)
 node_ips = []
-with open("nodes.txt", "w") as out:
+i = 0
+with open("../grid/nodes.txt", "w") as out:
     for node in nodes:
         command = "dig +short " + node
         process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         ip = process.communicate()[0]
-        node_ips.append('"akka://ClusterSystem@' + ip.strip() + ':25251"')
+
+        if i < nb_nodes:
+            node_ips.append('"akka://ClusterSystem@' + ip.strip() + ':' + port + '"')
 
         out.write(ip)
 
