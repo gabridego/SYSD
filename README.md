@@ -4,7 +4,7 @@ Sujet du Makefile parallèle et exemples de Makefile
 
 - Move inside the `grid` directory;
 - To reserve nodes, execute `./oarsub.sh <nodes> <time>`. For example, to reserve 5 nodes for one hour and half `./oarsub 5 01:30`;
-- To install debian on all nodes, install libraries and execute the makefile, `./deploy.sh <nb of workers> <port>`. The Makefile must be in `dist_make`.
+- To install debian on all nodes, install libraries and execute the makefile, `./deploy.sh <nb of workers> <port>`. In total, `<nb of workers>` + 1 nodes are deployed, one for the master and the rest for the workers. The Makefile must be in `dist_make`.
 
 After installing the operating system and the dependencies on each node, the script does:
 - execute a Python script to create the configuration file for akka cluster, containing the nodes' IP addresses;
