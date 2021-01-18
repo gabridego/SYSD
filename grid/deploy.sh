@@ -8,8 +8,6 @@ fi
 
 PWD="`(cd $(dirname \"$0\") && pwd )`"
 TAKTUK="${PWD}/taktuk.sh"
-TAKTUK_EXEC="${PWD}/taktuk_exec.sh"
-TAKTUK_EXEC_MASTER="${PWD}/taktuk_exec_master.sh"
 # PLAYBOOK="${PWD}/provision.yml"
 
 kadeploy3 -f $OAR_NODE_FILE -e debian10-x64-nfs -k

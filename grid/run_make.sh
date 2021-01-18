@@ -1,3 +1,6 @@
+TAKTUK_EXEC="${PWD}/taktuk_exec.sh"
+TAKTUK_EXEC_MASTER="${PWD}/taktuk_exec_master.sh"
+
 if [[ $# -ne 2 ]]
 then
   echo "Argument not correct, put number of workers and port"
