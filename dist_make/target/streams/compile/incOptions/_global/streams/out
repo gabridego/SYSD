@@ -1,29 +1,30 @@
-[debug] Created transactional ClassFileManager with tempDir = G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes.bak
-[debug] About to delete class files:
-[debug] We backup class files:
-[debug] Registering generated classes:
-[debug] 	InitMake$.class
-[debug] 	CompletedDep$.class
-[debug] 	MakeTask$.class
-[debug] 	InitMake.class
-[debug] 	Worker$$anonfun$receive$2.class
-[debug] 	Main$.class
-[debug] 	ErrorDep.class
-[debug] 	Master$$anonfun$receive$1.class
-[debug] 	CommandRunner$.class
-[debug] 	Worker.class
-[debug] 	Main$delayedInit$body.class
-[debug] 	TaskMade$.class
-[debug] 	InitWorker.class
-[debug] 	ErrorDep$.class
-[debug] 	Main.class
-[debug] 	InitWorker$.class
-[debug] 	Task.class
-[debug] 	MakeTask.class
-[debug] 	CommandRunner.class
-[debug] 	Parser.class
-[debug] 	Master.class
-[debug] 	Conf.class
-[debug] 	CompletedDep.class
-[debug] 	TaskMade.class
-[debug] Removing the temporary directory used for backing up class files: G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes.bak
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App$RootBehavior$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$WorkersUpdated.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$WorkersUpdated$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$Event.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$TransformCompleted.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$Tick$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$MakeTask.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$TransformCompleted$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$TaskCompleted$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$JobFailed$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$JobFailed.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CommandRunner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$Command.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CborSerializable.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$MakeTask$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Frontend$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Task.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CommandRunner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$TaskCompleted.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Parser.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Worker$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes.bak[0m

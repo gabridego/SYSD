@@ -1,57 +1,25 @@
-[debug] [zinc] IncrementalCompile -----------
-[debug] IncrementalCompile.incrementalCompile
-[debug] previous = Stamps for: 0 products, 0 sources, 0 libraries
-[debug] current source = Set(${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/CommandRunner.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/make_parse.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/master_worker.scala)
-[debug] > initialChanges = InitialChanges(Changes(added = Set(${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/CommandRunner.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/master_worker.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/make_parse.scala), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())
-[debug] Full compilation, no sources in previous analysis.
-[debug] all 3 sources are invalidated
-[debug] Initial set of included nodes: 
-[debug] Recompiling all sources: number of invalidated sources > 50.0% of all sources
-[debug] compilation cycle 1
-[info] compiling 3 Scala sources to G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes ...
-[debug] Getting org.scala-sbt:compiler-bridge_2.13:1.4.3:compile for Scala 2.13.4
-[info] Non-compiled module 'compiler-bridge_2.13' for Scala 2.13.4. Compiling...
-[debug] Creating plain compiler interface for 2.13.4.
-[debug]   > Arguments: 
-[debug] 	-d
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_aea6b60b
-[debug] 	-nowarn
-[debug] 	-bootclasspath
-[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.4\scala-library-2.13.4.jar
-[debug] 	-classpath
-[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-interface\1.4.3\compiler-interface-1.4.3.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\util-interface\1.4.0\util-interface-1.4.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-bridge_2.13\1.4.3\compiler-bridge_2.13-1.4.3-sources.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-compiler\2.13.4\scala-compiler-2.13.4.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.13.4\scala-reflect-2.13.4.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\jline\jline\3.16.0\jline-3.16.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\net\java\dev\jna\jna\5.3.1\jna-5.3.1.jar
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\scala\ZincCompat.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\API.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\AbstractZincFile.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Analyzer.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\CallbackGlobal.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ClassName.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Compat.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\CompilerBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ConsoleBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\DelegatingReporter.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Dependency.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ExtractAPI.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ExtractUsedNames.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\GlobalHelpers.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleFactoryBridge.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleHelper.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\InteractiveConsoleResponse.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\JarUtils.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\JavaUtils.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\LocalToNonLocalClass.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\LocateClassFile.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Log.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\Message.scala
-[debug] 	C:\Users\super\AppData\Local\Temp\sbt_5566d454\xsbt\ScaladocBridge.scala
-[debug]       
-[info]   Compilation completed in 14.584s.
-[debug] [zinc] Running cached compiler 367450e2 for Scala compiler version 2.13.4
-[debug] [zinc] The Scala compiler is invoked with:
-[debug] 	-bootclasspath
-[debug] 	C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.4\scala-library-2.13.4.jar
-[debug] 	-classpath
-[debug] 	G:\Documenti\Università\V Anno\Systemes distribué\systeme-distribues\dist_make\target\scala-2.13\classes;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\typesafe\akka\akka-actor_2.13\2.6.10\akka-actor_2.13-2.6.10.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\rogach\scallop_2.13\3.5.1\scallop_2.13-3.5.1.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\com\typesafe\config\1.4.0\config-1.4.0.jar;C:\Users\super\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\modules\scala-java8-compat_2.13\0.9.0\scala-java8-compat_2.13-0.9.0.jar
-[debug] Scala compilation took 18.388215 s
-[info] done compiling
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 0 products, 0 sources, 0 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/fr/ensimag/sysd/CborSerializable.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/make_parse.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/CommandRunner.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/Worker.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/App.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/CommandRunner.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/Worker.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/App.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/Frontend.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/CborSerializable.scala, ${BASE}/src/main/scala/fr/ensimag/sysd/distr_make/make_parse.scala), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0mFull compilation, no sources in previous analysis.[0m
+[0m[[0m[0mdebug[0m] [0m[0mall 6 sources are invalidated[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0mdebug[0m] [0m[0mRecompiling all sources: number of invalidated sources > 50.0% of all sources[0m
+[0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 6 Scala sources to /home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.13:1.4.3:compile for Scala 2.13.1[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 59b29e4 for Scala compiler version 2.13.1[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-deprecation[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-feature[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-unchecked[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Xlog-reflective-calls[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Xlint[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.1/scala-library-2.13.1.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor-typed_2.13/2.6.8/akka-actor-typed_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-cluster-typed_2.13/2.6.8/akka-cluster-typed_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-serialization-jackson_2.13/2.6.8/akka-serialization-jackson_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.13/2.6.8/akka-actor_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.13/2.6.8/akka-slf4j_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-cluster_2.13/2.6.8/akka-cluster_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-cluster-tools_2.13/2.6.8/akka-cluster-tools_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-distributed-data_2.13/2.6.8/akka-distributed-data_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.4/jackson-core-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.4/jackson-annotations-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.4/jackson-databind-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.10.4/jackson-module-scala_2.13-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.4/jackson-datatype-jdk8-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.4/jackson-datatype-jsr310-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.4/jackson-module-parameter-names-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.10.4/jackson-dataformat-cbor-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.0/config-1.4.0.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-java8-compat_2.13/0.9.0/scala-java8-compat_2.13-0.9.0.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-remote_2.13/2.6.8/akka-remote_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-coordination_2.13/2.6.8/akka-coordination_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/lmdbjava/lmdbjava/0.7.0/lmdbjava-0.7.0.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-paranamer/2.10.4/jackson-module-paranamer-2.10.4.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.13/2.6.8/akka-stream_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-pki_2.13/2.6.8/akka-pki_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/agrona/agrona/1.4.1/agrona-1.4.1.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jnr-ffi/2.1.9/jnr-ffi-2.1.9.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jffi/1.2.18/jffi-1.2.18.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jffi/1.2.18/jffi-1.2.18-native.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jnr-constants/0.9.12/jnr-constants-0.9.12.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-protobuf-v3_2.13/2.6.8/akka-protobuf-v3_2.13-2.6.8.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.13/0.4.1/ssl-config-core_2.13-0.4.1.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/hierynomus/asn-one/0.4.0/asn-one-0.4.0.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jnr-a64asm/1.0.0/jnr-a64asm-1.0.0.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/jnr/jnr-x86asm/1.0.2/jnr-x86asm-1.0.2.jar:/home/gabriele/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 18.027375778 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m

@@ -1,2 +1,3 @@
-[debug] Copy resource mappings: 
-[debug] 	
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/gabriele/Documents/systeme-distribues/dist_make/src/main/resources/application.conf,/home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/gabriele/Documents/systeme-distribues/dist_make/src/main/resources/transformation.conf,/home/gabriele/Documents/systeme-distribues/dist_make/target/scala-2.13/classes/transformation.conf)[0m
