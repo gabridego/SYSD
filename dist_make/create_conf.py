@@ -17,7 +17,7 @@ port = '25251'
 nb_nodes = 1
 if len(sys.argv) > 1:
     port = sys.argv[1]
-    nb_nodes = sys.argv[2] + 1
+    nb_nodes = int(sys.argv[2]) + 1
 
 # get nodes's ips and save them in a file to access from nodes (nfs)
 node_ips = []
