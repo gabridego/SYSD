@@ -67,7 +67,7 @@ object Frontend {
       case Tick =>
         if (waitingTasks.isEmpty && taskQueue.isEmpty){
           stopTimersExecutionComplete()
-          Behaviors.stopped
+
           ctx.log.info("empty lists!!!")
           for (worker <- workers) {
             implicit val timeout: Timeout = 600.seconds
