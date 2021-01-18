@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]]
+if [[ $# -ne 2 ]]
 then
-  echo "Argument not correct"
+  echo "Argument not correct, put number of workers and port"
   exit
 fi
 
@@ -17,12 +17,8 @@ kadeploy3 -f $OAR_NODE_FILE -e debian10-x64-nfs -k
 # connect to reserved nodes as root and with self-propagation
 taktuk -l root -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES ) broadcast exec [ $TAKTUK ]
 
-cd ../akka-sample-cluster-scala
-python create_conf.py
 cd ../dist_make
 python create_conf.py
 
-uniq $OAR_NODE_FILE > nodes.txt
-
-taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES | tail -n +2 | head -$1 ) broadcast exec [ $TAKTUK_EXEC ]
-#taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( uniq $OAR_FILE_NODES | head -1 ) broadcast exec [ $TAKTUK_EXEC_MASTER $1 ]
+taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | tail -n +2 | head -$1 ) broadcast exec [ $TAKTUK_EXEC $2 ]
+taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | head -1 ) broadcast exec [ $TAKTUK_EXEC_MASTER $2 ]

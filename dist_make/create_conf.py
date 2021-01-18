@@ -1,4 +1,4 @@
-import os, subprocess
+import os, sys, subprocess
 
 # get nodes' hostnames
 nodes = set()
