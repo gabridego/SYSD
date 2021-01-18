@@ -4,7 +4,7 @@ import akka.actor.typed.{ActorSystem, Behavior}
 import akka.actor.typed.scaladsl.Behaviors
 import akka.cluster.typed.Cluster
 import com.typesafe.config.ConfigFactory
-import java.net._
+//import java.net._
 
 object App {
 
@@ -41,15 +41,21 @@ object App {
   }
 
   def startup(role: String, port: Int): Unit = {
-    val localhost: InetAddress = InetAddress.getLocalHost
-    val localIpAddress: String = localhost.getHostAddress
+    //val localhost: InetAddress = InetAddress.getLocalHost
+    //val localIpAddress: String = localhost.getHostAddress
 
     // Override the configuration of the port and role
-    val config = ConfigFactory
+    /*val config = ConfigFactory
       .parseString(s"""
         akka.remote.artery.canonical.port=$port
         akka.cluster.roles = [$role]
         akka.remote.artery.canonical.hostname=$localIpAddress
+        """)
+      .withFallback(ConfigFactory.load("transformation"))*/
+    val config = ConfigFactory
+      .parseString(s"""
+        akka.remote.artery.canonical.port=$port
+        akka.cluster.roles = [$role]
         """)
       .withFallback(ConfigFactory.load("transformation"))
 
