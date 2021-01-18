@@ -5,12 +5,15 @@ import akka.actor.typed.scaladsl.Behaviors
 import akka.cluster.typed.Cluster
 import com.typesafe.config.ConfigFactory
 import java.net._
+import TimerSingleton._
 
 object App {
 
   object RootBehavior {
     def apply(): Behavior[Nothing] = Behaviors.setup[Nothing] { ctx =>
       val cluster = Cluster(ctx.system)
+
+      startCreationActor()
 
       if (cluster.selfMember.hasRole("backend")) {
         val workersPerNode =
@@ -22,6 +25,9 @@ object App {
       if (cluster.selfMember.hasRole("frontend")) {
         ctx.spawn(Frontend(), "Frontend")
       }
+
+      startCreationParsingTreeAndStopActorCreation()
+
       Behaviors.empty
     }
   }
@@ -41,15 +47,14 @@ object App {
   }
 
   def startup(role: String, port: Int): Unit = {
-    val localhost: InetAddress = InetAddress.getLocalHost
-    val localIpAddress: String = localhost.getHostAddress
+
 
     // Override the configuration of the port and role
     val config = ConfigFactory
       .parseString(s"""
         akka.remote.artery.canonical.port=$port
         akka.cluster.roles = [$role]
-        akka.remote.artery.canonical.hostname=$localIpAddress
+
         """)
       .withFallback(ConfigFactory.load("transformation"))
 

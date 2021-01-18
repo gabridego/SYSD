@@ -12,6 +12,8 @@ import akka.actor.typed.scaladsl.Behaviors
 import scala.util.Failure
 import scala.util.Success
 
+import TimerSingleton._
+
 //#frontend
 object Frontend {
 
@@ -31,10 +33,14 @@ object Frontend {
 
       }
       ctx.system.receptionist ! Receptionist.Subscribe(Worker.WorkerServiceKey, subscriptionAdapter)
+
       val filename = "Makefile"
       var target = ""
       val parser_makefile = new Parser(filename)
       parser_makefile.create_graph(target)
+
+      startActorExecutionAndStopParsingTreeCreation()
+
       var taskQueue = Queue[Task]()
       var waitingTasks = HashSet[Task]()
       var taskDone = HashSet[String]()
@@ -60,6 +66,7 @@ object Frontend {
 
       case Tick =>
         if (waitingTasks.isEmpty && taskQueue.isEmpty){
+          stopTimersExecutionComplete()
           Behaviors.stopped
         }
 
