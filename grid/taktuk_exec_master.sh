@@ -1,4 +1,4 @@
-cd ./systeme-distribues/akka-sample-cluster-scala
+cd ./systeme-distribues/dist_make
 #command="runMain sample.cluster.simple.App "$1" 25251"
 #sbt $command 
-sbt "runMain sample.cluster.simple.App 25251"
+sbt "runMain fr.ensimag.sysd.distr_make.App 25251"
