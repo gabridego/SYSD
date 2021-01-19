@@ -21,7 +21,7 @@ The performances of the program depend not only on the number of nodes, but also
 
 After deployment, modify the file `dist_make/src/main/resources/transformation.conf`.
 
-Then, from the `grid` directory, execute `./run_make.sh <nb of workers> <port>`. `<nb of workers>` and `<port>` must be the same as used when executing `deploy.sh` at the previous step. To change them, from the `dist_make` directory run `python create_conf.py <port> <nb of workers>`.
+Then, from the `grid` directory, execute `./run_make.sh <nb of workers> <port>`. `The Python script `create_conf.py` eventually updates ports and number of workers.
 
 Otherwise, manually run the commands:
 
