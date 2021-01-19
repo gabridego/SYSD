@@ -13,16 +13,19 @@ After installing the operating system and the dependencies on each node, the scr
 
 Information about the elapsed time are written in `dist_make/metrics.txt`.
 
+To rerun program, execute `./run_make.sh <nb of workers> <port>`
+
 ## Run with a different number of actors per node
 
 The performances of the program depend not only on the number of nodes, but also on the number of workers per node. By default, two actors are created for each worker node.
 
 After deployment, modify the file `dist_make/src/main/resources/transformation.conf`.
 
-Then, from the `grid` directory, manually run the commands:
+Then, from the `grid` directory, execute `./run_make.sh <nb of workers> <port>`. `<nb of workers>` and `<port>` must be the same as used when executing `deploy.sh` at the previous step. To change them, from the `dist_make` directory run `python create_conf.py <port> <nb of workers>`.
+
+Otherwise, manually run the commands:
 
 `taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | tail -n +2 | head -<nb of workers> ) broadcast exec [ $PATH_TO_PROJECT/grid/taktuk_exec.sh <port> ] &`
 
 `taktuk -s -o connector -o status -o output='"$host: $line\n"' -f <( cat nodes.txt | head -1 ) broadcast exec [ $PATH_TO_PROJECT/grid/taktuk_exec_master.sh <port> ]`
 
-`<nb of workers>` and `<port>` must be the same as used when executing `deploy.sh` at the previous step.
