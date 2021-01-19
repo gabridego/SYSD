@@ -4,6 +4,7 @@ import os, sys, subprocess
     Args:
     - Port number for akka cluster (ex. 25251)
     - Number of worker nodes (ex. 3)
+    
 """
 
 # get nodes' hostnames
