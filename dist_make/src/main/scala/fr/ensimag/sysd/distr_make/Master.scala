@@ -14,8 +14,8 @@ import scala.util.Success
 
 import TimerSingleton._
 
-//#frontend
-object Frontend {
+//#master
+object Master {
 
   sealed trait Event
   private case object Tick extends Event

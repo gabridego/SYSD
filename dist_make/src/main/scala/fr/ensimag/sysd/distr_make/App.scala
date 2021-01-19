@@ -15,15 +15,15 @@ object App {
 
       startCreationActor()
 
-      if (cluster.selfMember.hasRole("backend")) {
+      if (cluster.selfMember.hasRole("worker")) {
         val workersPerNode =
           ctx.system.settings.config.getInt("transformation.workers-per-node")
         (1 to workersPerNode).foreach { n =>
           ctx.spawn(Worker(), s"Worker$n")
         }
       }
-      if (cluster.selfMember.hasRole("frontend")) {
-        ctx.spawn(Frontend(), "Frontend")
+      if (cluster.selfMember.hasRole("master")) {
+        ctx.spawn(Master(), "Master")
       }
 
       startCreationParsingTreeAndStopActorCreation()
@@ -33,13 +33,11 @@ object App {
   }
 
   def main(args: Array[String]): Unit = {
-    // starting 2 frontend nodes and 3 backend nodes
+    // starting 1 master node and 2 worker nodes
     if (args.isEmpty) {
-      startup("backend", 25251)
-      startup("backend", 25252)
-      startup("frontend", 0)
-      startup("frontend", 0)
-      startup("frontend", 0)
+      startup("worker", 25251)
+      startup("worker", 25252)
+      startup("master", 0)
     } else {
       require(args.length == 2, "Usage: role port")
       startup(args(0), args(1).toInt)
